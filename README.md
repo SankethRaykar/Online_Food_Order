@@ -32,7 +32,7 @@ src/main/java/
     │       └── FoodServiceImplementation.java
     └── exception/
         ├── GlobalExceptionHandler.java
-        └── ResourceNotFoundException.java
+       
 ```
 
 ---
@@ -76,27 +76,47 @@ src/main/java/
 
 ## 🌐 API Endpoints
 
+Perfect! Based on your current controller code for both `RestaurantController` and `FoodController`, here's the **accurate `🌐 API Endpoints` section** for your `README.md` file.
+
+---
+
+## 🌐 API Endpoints
+
 ### 📍 Restaurant APIs
 
-| Method | Endpoint            | Description                      |
-| ------ | ------------------- | -------------------------------- |
-| POST   | `/restaurants`      | Create a new restaurant          |
-| PUT    | `/restaurants/{id}` | Update restaurant details        |
-| DELETE | `/restaurants/{id}` | Delete restaurant by ID          |
-| GET    | `/restaurants/{id}` | Get restaurant by ID             |
-| GET    | `/restaurants`      | List all restaurants (paginated) |
+| Method | Endpoint                                     | Description                                                 |
+| ------ | -------------------------------------------- | ----------------------------------------------------------- |
+| POST   | `/restaurant/api/save`                       | Create a new restaurant                                     |
+| GET    | `/restaurant/api/get/{id}`                   | Get restaurant by ID                                        |
+| GET    | `/restaurant/api/getall`                     | Get all restaurants with pagination/sorting                 |
+| PUT    | `/restaurant/api/update/{id}`                | Update restaurant by ID                                     |
+| DELETE | `/restaurant/api/{id}/delete`                | Delete restaurant by ID                                     |
+| POST   | `/restaurant/api/{restaurantId}/assignFood`  | Assign one or more food items to a restaurant (by food IDs) |
+
+---
 
 ### 📍 Food APIs
 
-| Method | Endpoint                | Description              |
-| ------ | ----------------------- | ------------------------ |
-| POST   | `/food/{restaurant_id}` | Add food to a restaurant |
-| PUT    | `/food/{id}`            | Update food item         |
-| DELETE | `/food/{id}`            | Delete food item         |
-| GET    | `/food/{id}`            | Get food item by ID      |
-| GET    | `/food`                 | Get all food items       |
+| Method | Endpoint                    | Description                                |
+| ------ | --------------------------- | ------------------------------------------ |
+| POST   | `/food/api/save`            | Create a new food item                     |
+| GET    | `/food/api/getfood/{id}`    | Get food item by ID                        |
+| GET    | `/food/api/getallfood`      | Get all food items with pagination/sorting |
+| PUT    | `/food/api/updatefood/{id}` | Update food item by ID                     |
+| DELETE | `/food/api/{id}/delete`     | Delete food item by ID                     |
 
 ---
+
+### 📝 Notes:
+
+* Pagination & sorting supported in `/getall` endpoints using:
+
+  ```
+  ?pageNum=0&pageSize=5&sortBy=createdAt
+  ```
+* Food assignment uses `Set<Integer>` of food IDs in request body.
+
+Would you like me to update the full `README.md` with this section included and send it as a file?
 
 ## ⚙️ application.properties
 
@@ -118,8 +138,12 @@ spring.jpa.show-sql=true
 
 ```json
 {
-  "name": "Food Haven",
-  "location": "Hyderabad"
+  "name": "The Spicy Spoon",
+  "location": "MG Road",
+  "city": "Bangalore",
+  "state": "Karnataka",
+  "country": "India",
+  "pincode": 560001
 }
 ```
 
@@ -130,8 +154,8 @@ spring.jpa.show-sql=true
 ```json
 {
   "name": "Chicken Biryani",
-  "price": 300,
-  "type": "NON_VEG"
+  "description": "spicy biriyani",
+  "price": 200.0
 }
 ```
 
