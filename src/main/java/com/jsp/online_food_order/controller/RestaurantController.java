@@ -100,7 +100,7 @@ public class RestaurantController {
 	
 	//used to assign the food to the particular restaurant
 	
-	@PostMapping("/{restaurantId}/iassignFood")
+	@PostMapping("/{restaurantId}/assignFood")
 	public ResponseEntity<ResponseStructure<Restaurant>> assignFood(@PathVariable Integer restaurantId,@RequestBody Set<Integer> food){
 		Restaurant restaurant =restaurantService.assignFood(restaurantId, food);
 		ResponseStructure<Restaurant> apiResponse=new ResponseStructure<>();
