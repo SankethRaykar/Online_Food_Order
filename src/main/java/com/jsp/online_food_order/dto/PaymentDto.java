@@ -6,10 +6,12 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class OrderRequest {
-
+public class PaymentDto {
+	
 	@NotNull
-	private List<OrderItemRequest> orderItems;
+	private List<OrderItemRequest> orderItem;
 	@NotNull
-	private Integer restaurantId;
+	private boolean isPaymentSuccessful;
+	@NotNull
+	public Integer restaurantId;
 }

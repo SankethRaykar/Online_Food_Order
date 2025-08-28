@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.jsp.online_food_order.entity.Food;
+import com.jsp.online_food_order.entity.Order;
 import com.jsp.online_food_order.entity.Restaurant;
 import com.jsp.online_food_order.repository.FoodRepository;
 import com.jsp.online_food_order.repository.RestaurantRepository;
@@ -109,6 +110,28 @@ public class RestaurantServiceImplementation implements RestaurantService {
 		return restaurantRepository.save(restaurant);
 	}
 
+	public List<Food> findFoodByRestaurantId(Integer id) {
+		List<Food> food =restaurantRepository.findFoodByRestaurantId(id);
+		if(food==null || food.size()==0) {
+			throw new NoSuchElementException("restaurant with id " +id+ " not found or the food is not assigned");
+			
+		}else {
+		return food;
+	}
 
+
+}
+
+	@Override
+	public List<Order> findOrdersByRestaurantId(Integer id) {
+		List<Order> orders = restaurantRepository.findOrdersByRestaurantId(id);
+		if(orders==null || orders.size()==0) {
+			throw new NoSuchElementException("Restaurant with ID: "+id+" not found or there are no "
+					+ "orders");
+		}
+		else {
+			return orders;
+		}
+	}
 }
 

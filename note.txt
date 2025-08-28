@@ -160,3 +160,8 @@ PUT http://localhost:8080/restaurant/api/update/6
 | `RestaurantController`            | Add a `@PutMapping("/update/{id}")` endpoint                              |
 
 Let me know if you want **partial update (PATCH)** support or to prevent updating certain fields like `createdAt`.
+
+
+
+use of requiredArgsConstructor 
+should have final in it 

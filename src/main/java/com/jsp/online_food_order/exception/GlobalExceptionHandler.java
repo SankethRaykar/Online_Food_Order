@@ -21,4 +21,16 @@ public class GlobalExceptionHandler {
 		response.setStatusCode(HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
 	}
+	
+	
+	@ExceptionHandler(PaymentFailedException.class)
+	public ResponseEntity<ResponseStructure<String>> paymentFailedException(PaymentFailedException exception){
+		ResponseStructure<String> apiresponse =new ResponseStructure<>();
+		apiresponse.setData(exception.getMessage());
+		apiresponse.setMessage("exception handled");
+		apiresponse.setStatusCode(HttpStatus.NOT_ACCEPTABLE.value());
+		
+		return new ResponseEntity<>(apiresponse, HttpStatus.NOT_ACCEPTABLE);
+		
+	}
 }

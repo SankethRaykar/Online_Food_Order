@@ -1,5 +1,7 @@
 package com.jsp.online_food_order.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +20,7 @@ public class OrderItem {
 	@ManyToOne
 	private Food food;
 	
+	@JsonIgnore
 	@ManyToOne
 	private Order order;
 	
